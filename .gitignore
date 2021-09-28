@@ -6,7 +6,7 @@ public
 .log
 dist
 docs
-development.env
+.env
 npm-debug.log
 .nyc_output
 coverage
