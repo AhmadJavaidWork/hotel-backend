@@ -7,13 +7,19 @@ import {
   updated,
 } from '../../../utils/response';
 import { roomView } from './helpers';
+import { errorLogger } from '../../../utils/helpers';
 
 export const getAll = async (req, res) => {
-  const allRooms = await queries.getAll();
-  return success(
-    res,
-    allRooms.map((room) => roomView(room))
-  );
+  try {
+    const allRooms = await queries.getAll();
+    console.log(ahmad);
+    return success(
+      res,
+      allRooms.map((room) => roomView(room))
+    );
+  } catch (error) {
+    errorLogger(res, req.baseUrl, error);
+  }
 };
 
 export const getById = async ({ params }, res) => {

@@ -35,3 +35,9 @@ export const wrongPassword = (res) => {
     .status(resStatuses.badRequest)
     .json({ success: false, message: errors.wrongPass });
 };
+
+export const internalServerError = (res) => {
+  return res
+    .status(resStatuses.internalError)
+    .json({ success: false, message: errors.internalError });
+};

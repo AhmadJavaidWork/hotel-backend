@@ -9,10 +9,7 @@ const server = http.createServer(app);
 setImmediate(() => {
   server.listen(port, ip, () => {
     console.log(
-      'Express server listening on http://%s:%d, in %s mode',
-      ip,
-      port,
-      env
+      `Express server listening on http://${ip}:${port}, in ${env} mode`
     );
   });
 });
