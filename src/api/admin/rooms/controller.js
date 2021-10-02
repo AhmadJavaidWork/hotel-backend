@@ -23,10 +23,14 @@ export const getAll = async (req, res) => {
 };
 
 export const getById = async ({ params }, res) => {
-  const { id } = params;
-  const room = await queries.getById(id);
-  if (room) return success(res, roomView(room));
-  return notFound(res);
+  try {
+    const { id } = params;
+    const room = await queries.getById(id);
+    if (room) return success(res, roomView(room));
+    return notFound(res);
+  } catch (error) {
+    errorLogger(res, req.baseUrl, error);
+  }
 };
 
 export const create = async ({ body }, res) => {
